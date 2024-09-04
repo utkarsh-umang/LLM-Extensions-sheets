@@ -20,4 +20,4 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 2. In column C, enter the formula `=Claude(A2,B2)` for Claude AI or `=GPT(A2,B2)` for GPT.
 3. Enter content in columns A and B. The AI response will generate in column C.
 
-For more detailed information, customization options, and advanced features, please refer to the [Advanced Guide](link-to-advanced-guide.md).
+For more detailed information, customization options, and advanced features, please refer to the [Advanced Guide](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/ADVANCED_GUIDE.md).
