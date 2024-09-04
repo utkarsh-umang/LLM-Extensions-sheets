@@ -32,7 +32,7 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 2. Once logged in, navigate to the API section in your account dashboard.
 3. Create a new API key.
 4. Copy the API key and keep it secure.
-5. [![Youtube Tutorial [Only the first minute]](https://img.youtube.com/vi/eRWZuijASuU/0.jpg)](https://www.youtube.com/watch?v=eRWZuijASuU)
+5. Only the first minute [![Youtube Tutorial [Only the first minute]](https://img.youtube.com/vi/eRWZuijASuU/0.jpg)](https://www.youtube.com/watch?v=eRWZuijASuU)
 
 ## Setup
 
@@ -86,6 +86,58 @@ Choose based on your specific needs, API availability, and personal preference. 
 - Adjust the column numbers in the `onEdit` function if you want to use different columns for input and output.
 - For GPT, you can change the model (e.g., from "gpt-3.5-turbo" to "gpt-4") if you have access to different models.
 - For Claude, you can change the model (e.g., from "claude-3-sonnet" to "claude-3-haiku").
+
+## Understanding onOpen and onEdit Functions [Recommended - Remove Both]
+
+### onOpen Function
+The `onOpen` function is designed to create a custom menu when the spreadsheet is opened.
+
+- **Purpose**: Creates a custom menu for easy access to the Claude AI function.
+- **Behavior**: Runs once when the spreadsheet is opened, adding a new menu item.
+- **API Usage**: Does not trigger any API calls on its own.
+- **User Control**: Allows users to initiate API calls manually through the menu.
+
+**Benefits**:
+- Provides a user-friendly interface for interacting with the AI function.
+- Does not increase API usage by automatically making calls when the sheet is opened.
+- Gives users control over when to send queries to the API.
+
+### onEdit Function (if implemented)
+The `onEdit` function is triggered when a cell from the column specified in the function is changed.
+
+```javascript
+function onEdit(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+  
+  // Check if the edited cell is in the column where you want to trigger Claude
+  if (range.getColumn() === 1 && range.getRow() > 1) { // Adjust column number as needed 1 for A, 2 for B etc
+    const prompt = sheet.getRange(range.getRow(), 1).getValue(); // Adjust column number for prompt
+    const value = sheet.getRange(range.getRow(), 2).getValue(); // Adjust column number for value
+    
+    if (prompt && value) {
+      const result = callClaude(prompt, value);
+      sheet.getRange(range.getRow(), 3).setValue(result); // Adjust column number for result
+    }
+  }
+}
+```
+
+- **Usage**: Can be used to automatically update AI responses when input cells are changed.
+- **Behavior**: Runs each time a cell from specified column is edited, potentially triggering multiple API calls.
+- **Tradeoff**: Provides real-time updates but may lead to increased API usage and potential rate limiting.
+
+### Formula-Based Usage
+When using the AI function as a formula (e.g., `=Claude(A1, B1)`):
+
+- **Usage**: Users manually enter the formula in cells where they want AI-generated content.
+- **Behavior**: Updates only when the cell containing the formula is recalculated.
+- **API Calls**: Triggered only when the formula is calculated or forcibly refreshed.
+- **Tradeoffs**: 
+  - Offers more control over when API calls are made.
+  - May be slower if updating multiple cells, as each formula triggers a separate API call.
+  - Can hit API rate limits if too many cells are recalculated simultaneously.
+  - Requires manual triggering or recalculation for updates.
 
 ## Troubleshooting
 
