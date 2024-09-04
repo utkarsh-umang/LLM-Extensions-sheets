@@ -75,8 +75,11 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 
 ## Customization
 
-- You can modify the query sent to the AI in the `callClaude` or `callGPT` function to change the prompt.
-- Adjust the column numbers in the `onEdit` function if you want to use different columns for input and output.
+- You can modify the final prompt sent to the AI in the following ways: 
+   - Using the `fullQuery` variable in the script. The prompt and value passed to the function are just variable names, they can be used in any way to reference two values.
+   - [Example fullQuery](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/customiseFinalPrompt.png)
+   - Using `=CONCATENATE` to add string values from excel sheet only
+   - [Example sheetPrompt](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/finalPromptFromSheet.png)
 - For GPT, you can change the model (e.g., from "gpt-3.5-turbo" to "gpt-4") if you have access to different models.
 - For Claude, you can change the model (e.g., from "claude-3-sonnet" to "claude-3-haiku").
 
@@ -114,7 +117,8 @@ function onEdit(e) {
   const sheet = range.getSheet();
   
   // Check if the edited cell is in the column where you want to trigger Claude
-  if (range.getColumn() === 1 && range.getRow() > 1) { // Adjust column number as needed 1 for A, 2 for B etc
+  // Adjust column number as needed 1 for A, 2 for B etc
+  if (range.getColumn() === 1 && range.getRow() > 1) { 
     const prompt = sheet.getRange(range.getRow(), 1).getValue(); // Adjust column number for prompt
     const value = sheet.getRange(range.getRow(), 2).getValue(); // Adjust column number for value
     
@@ -131,7 +135,7 @@ function onEdit(e) {
 - **Tradeoff**: Provides real-time updates but may lead to increased API usage and potential rate limiting.
 
 ### Formula-Based Usage
-When using the AI function as a formula (e.g., `=Claude(A1, B1)`):
+When using the AI function as a formula (e.g., `=Claude(A2, B2)` or `=GPT(A2,B2)`):
 
 - **Usage**: Users manually enter the formula in cells where they want AI-generated content.
 - **Behavior**: Updates only when the cell containing the formula is recalculated.
