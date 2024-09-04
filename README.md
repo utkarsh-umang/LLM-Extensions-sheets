@@ -8,7 +8,6 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 2. [Obtaining API Keys](#obtaining-api-keys)
 3. [Setup](#setup)
 4. [Usage](#usage)
-5. [Choosing Between Claude and GPT](#choosing-between-claude-and-gpt)
 6. [Customization](#customization)
 7. [Understanding onOpen() and onEdit() Functions](#understanding-onopen-and-onedit-functions-recommended---remove-both)
 8. [Troubleshooting](#troubleshooting)
@@ -48,9 +47,9 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 
 4. **Save the project**:
    - Click on `File` > `Save` or use the floppy disk icon.
-   - Give your project a name when prompted.
+   - Give your project a name.
 
-5. **Set up the trigger [Optional - only if using onEdit]**:
+5. **Set up the trigger** *[Optional - only if using onEdit]*:
    - In the Apps Script editor, click on the clock icon on the left sidebar to open the Triggers page.
    - Click the "+ Add Trigger" button in the bottom right.
    - Choose the following settings:
@@ -61,8 +60,8 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
    - Click "Save".
 
 6. **Authorize the script**:
-   - The first time you run the script, you'll be prompted to authorize it.
-   - Follow the prompts to grant the necessary permissions.
+   - The first time you run the script, you'll be asked to authorize it.
+   - Follow the instructions to grant the necessary permission.
 
 ## Usage
 
@@ -73,13 +72,6 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 3. Enter or modify content in columns A and B. The AI response will automatically generate or update in column C.
 
 4. The script will call the AI API whenever you change values in columns A or B, updating the corresponding cell in column C. [This step will only happen if using Trigger of onEdit (Step 5)]
-
-## Choosing Between Claude and GPT
-
-- Claude AI (Anthropic): Known for its strong performance in understanding context and generating nuanced responses.
-- GPT (OpenAI): Widely used and known for its versatility across various tasks.
-
-Choose based on your specific needs, API availability, and personal preference. You can implement both and compare results if desired.
 
 ## Customization
 
@@ -101,6 +93,7 @@ function onOpen() {
     .addToUi();
 }
 ```
+![Example onOpen](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/onOpen.png)
 
 - **Purpose**: Creates a custom menu for easy access to the Claude AI function.
 - **Behavior**: Runs once when the spreadsheet is opened, adding a new menu item.
