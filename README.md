@@ -77,9 +77,9 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 
 - You can modify the final prompt sent to the AI in the following ways: 
    - Using the `fullQuery` variable in the script. The prompt and value passed to the function are just variable names, they can be used in any way to reference two values.
-   - [Example fullQuery](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/customiseFinalPrompt.png)
+   - ![Example fullQuery](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/customiseFinalPrompt.png)
    - Using `=CONCATENATE` to add string values from excel sheet only
-   - [Example sheetPrompt](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/finalPromptFromSheet.png)
+   - ![Example sheetPrompt](https://github.com/utkarsh-umang/LLM-Extensions-sheets/blob/develop/img/finalPromptFromSheet.png)
 - For GPT, you can change the model (e.g., from "gpt-3.5-turbo" to "gpt-4") if you have access to different models.
 - For Claude, you can change the model (e.g., from "claude-3-sonnet" to "claude-3-haiku").
 
