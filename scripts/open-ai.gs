@@ -39,13 +39,31 @@ function callOpenAI(prompt, value) {
   return jsonResponse.choices[0].message.content.trim();
 }
 
-function GPT(prompt, value) {
-  return callOpenAI(prompt, value);
+function GPT(prompt, value) {         // This has been configured to take in two cells as input which 
+  return callOpenAI(prompt, value);  // are then used in the fullQuery to generate the full prompt
 }
 
+// Use this if you want to run the GPT every time the sheet is opened otherwise remove
 function onOpen() {
   const ui = SpreadsheetApp.getUi();
   ui.createMenu('GPT')
     .addItem('Send Query', 'GPT')
     .addToUi();
+}
+
+// Use this function if you want to trigger the GPT whenever there is a change in the input cells passed to prompt
+function onEdit(e) {
+  const range = e.range;
+  const sheet = range.getSheet();
+  
+  // Check if the edited cell is in the column where you want to trigger GPT
+  if (range.getColumn() === 1 && range.getRow() > 1) { // Adjust column number as needed
+    const prompt = sheet.getRange(range.getRow(), 1).getValue(); // Adjust column number for prompt
+    const value = sheet.getRange(range.getRow(), 2).getValue(); // Adjust column number for value
+    
+    if (prompt && value) {
+      const result = callOpenAI(prompt, value);
+      sheet.getRange(range.getRow(), 3).setValue(result); // Adjust column number for result
+    }
+  }
 }
