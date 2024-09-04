@@ -10,8 +10,9 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 4. [Usage](#usage)
 5. [Choosing Between Claude and GPT](#choosing-between-claude-and-gpt)
 6. [Customization](#customization)
-7. [Troubleshooting](#troubleshooting)
-8. [Security Considerations](#security-considerations)
+7. [Understanding onOpen() and onEdit() Functions](#understanding-onopen-and-onedit-functions-recommended---remove-both)
+8. [Troubleshooting](#troubleshooting)
+9. [Security Considerations](#security-considerations)
 
 ## Prerequisites
 
@@ -91,6 +92,15 @@ Choose based on your specific needs, API availability, and personal preference. 
 
 ### onOpen Function
 The `onOpen` function is designed to create a custom menu when the spreadsheet is opened.
+
+```javascript
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('Claude 3.5 Sonnet')
+    .addItem('Send Query', 'Claude')
+    .addToUi();
+}
+```
 
 - **Purpose**: Creates a custom menu for easy access to the Claude AI function.
 - **Behavior**: Runs once when the spreadsheet is opened, adding a new menu item.
