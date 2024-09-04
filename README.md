@@ -25,14 +25,14 @@ This project integrates AI models (Anthropic's Claude or OpenAI's GPT) with Goog
 2. Once logged in, navigate to the API section.
 3. Follow the instructions to create a new API key.
 4. Copy the API key and keep it secure.
-5. [![Youtube Tutorial](https://img.youtube.com/vi/4Tzs4qunYJY/0.jpg)](https://www.youtube.com/watch?v=4Tzs4qunYJY)
+[![Youtube Tutorial](https://img.youtube.com/vi/4Tzs4qunYJY/0.jpg)](https://www.youtube.com/watch?v=4Tzs4qunYJY)
 
 ### For GPT (OpenAI):
 1. Go to the [OpenAI website](https://openai.com) and sign up for an account.
 2. Once logged in, navigate to the API section in your account dashboard.
 3. Create a new API key.
 4. Copy the API key and keep it secure.
-5. [![Youtube Tutorial [Only the first minute]](https://img.youtube.com/vi/eRWZuijASuU/0.jpg)](https://www.youtube.com/watch?v=eRWZuijASuU)
+[![Youtube Tutorial [Only the first minute]](https://img.youtube.com/vi/eRWZuijASuU/0.jpg)](https://www.youtube.com/watch?v=eRWZuijASuU)
 
 ## Setup
 
