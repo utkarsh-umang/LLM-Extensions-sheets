@@ -64,7 +64,7 @@
 - For GPT, you can change the model (e.g., from "gpt-3.5-turbo" to "gpt-4") if you have access to different models.
 - For Claude, you can change the model (e.g., from "claude-3-sonnet" to "claude-3-haiku").
 
-## Understanding onOpen and onEdit Functions [Recommended - Remove Both]
+## Understanding onOpen and onEdit Functions
 
 ### onOpen Function
 The `onOpen` function is designed to create a custom menu when the spreadsheet is opened.
